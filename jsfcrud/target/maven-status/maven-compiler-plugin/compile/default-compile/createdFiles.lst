@@ -1,0 +1,13 @@
+jsfcrud\service\CategoryService.class
+jsfcrud\utils\Converter_CategoryInSubCategoryController.class
+jsfcrud\entity\Category.class
+jsfcrud\controller\SubCategoryController.class
+jsfcrud\core\entity\Base.class
+jsfcrud\dao\CategoryDao.class
+jsfcrud\config\AppConfig.class
+jsfcrud\entity\SubCategory.class
+jsfcrud\config\SpringApplicationContext.class
+jsfcrud\core\entity\BaseEntity.class
+jsfcrud\controller\CategoryController.class
+jsfcrud\dao\SubCategoryDao.class
+jsfcrud\service\SubCategoryService.class

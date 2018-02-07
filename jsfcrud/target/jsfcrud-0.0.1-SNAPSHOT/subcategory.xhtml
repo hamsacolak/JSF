@@ -1,0 +1,134 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/masterpage/template.xhtml">
+
+
+
+	<ui:define name="header">
+		<ui:include src="/masterpage/header.xhtml"></ui:include>
+	</ui:define>
+
+	<ui:define name="content">
+	
+	<style>
+
+
+.myTableClass>tbody>tr {
+	font-family: "Open Sans", sans-serif;
+	height: 2.75em;
+	box-shadow: none;
+	font-size: 11pt;
+	font-weight: 400;
+	line-height: 1.65;
+	padding-right: 2.75em;
+}
+
+.myTableClass>tbody>tr:hover {
+	background: #f56a6a !important;;
+}
+
+.myTableClass>tbody>tr:focus {
+	background: yellow; !important;;
+}
+</style>
+	
+	
+		<div class="content">
+
+			<h:form id="form" styleClass="w3-container">
+
+					<h:panelGroup layout="block" id="panelGrid">
+						<div class="row uniform">
+
+							<div>
+								<div >
+								<p>Category:</p>
+									<h:selectOneMenu styleClass="w3-input" 
+ 										value="#{subCategoryController.subCategory.category}"
+										converter="converter_CategoryInSubCategoryController">
+										<f:selectItems
+											value="#{subCategoryController.listCategory}" var="beer"
+											itemValue="#{beer}" itemLabel="#{beer.name}" />
+									</h:selectOneMenu>
+								</div>
+							</div>
+
+							<div>
+							<p>Name:</p>
+								<p:inputText required="true" styleClass="w3-input"
+									requiredMessage="Please"
+									value="#{subCategoryController.subCategory.name}"
+									placeholder="#{comp['subCategory.name']}" id="alan" />
+								<h:message for="alan"></h:message>
+							</div>
+
+							<div class="6u 12u$(xsmall)">
+								<p:commandButton
+									value="#{subCategoryController.itemIsSelected ? comp['btn.update'] : comp['btn.save']}"
+									actionListener="#{subCategoryController.save}"
+									update=":form:panelGrid,:form:basicDT"
+									styleClass="button icon fa-save"></p:commandButton>
+								<p:commandButton value="#{comp['btn.clean']}"
+									actionListener="#{subCategoryController.clean}"
+									update=":form:panelGrid" styleClass="button icon fa-remove"></p:commandButton>
+							</div>
+
+
+						</div>
+					</h:panelGroup>
+					<br></br>
+
+					<br></br>
+					<p class="logo">
+						<STRONG>List of SubCategory</STRONG>
+					</p>
+
+					<p:dataTable tableStyle="table-wrapper" scrollable="false"
+						tableStyleClass="myTableClass"
+						style="border-left:none; border: hidden; border-style: none;"
+						id="basicDT" var="car"
+						value="#{subCategoryController.listSubCategory}"
+						selectionMode="single"
+						selection="#{subCategoryController.selectedSubCategory}"
+						rowKey="#{car.id}">
+
+						<p:ajax event="rowSelect"
+							listener="#{subCategoryController.onRowSelect}"
+							update=":form:panelGrid" />
+
+						<p:column headerText="SubCategory"
+							style="text-align: left; width:5%">
+							<h:outputText value="#{car.name}" />
+						</p:column>
+						<p:column headerText="Category"
+							style="text-align: left; width:5%">
+							<h:outputText value="#{car.category.name}" />
+						</p:column>
+
+						<p:column style="text-align: right;  width: 20px;"
+							headerText="Remove">
+							<p:commandButton value="remove" styleClass="button icon fa-trash"
+								title="delete"
+								actionListener="#{subCategoryController.delete(car)}"
+								update="form" style="hover:blue;">
+							</p:commandButton>
+						</p:column>
+
+					</p:dataTable>
+
+
+				</h:form>
+
+
+
+		</div>
+	</ui:define>
+
+	<ui:define name="footer">
+		<ui:include src="/masterpage/footer.xhtml"></ui:include>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,113 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/masterpage/template.xhtml">
+
+
+
+
+
+	<ui:define name="header">
+		<ui:include src="/masterpage/header.xhtml"></ui:include>
+	</ui:define>
+
+
+
+	<ui:define name="content">
+
+<style>
+
+
+
+
+
+
+
+.myTableClass>tbody>tr {
+	font-family: "Open Sans", sans-serif;
+	height: 2.75em;
+	box-shadow: none;
+	font-size: 11pt;
+	font-weight: 400;
+	line-height: 1.65;
+	padding-right: 2.75em;
+}
+
+.myTableClass>tbody>tr:hover {
+	background: #f56a6a !important;;
+}
+
+.myTableClass>tbody>tr:focus {
+	background: yellow; !important;;
+}
+</style>
+		<div class="content">
+
+			<h:form id="form" styleClass="w3-container">
+
+				<h:panelGroup layout="block" id="panelGrid">
+					<div class="row uniform">
+						<div >
+							<p:inputText   required="true" requiredMessage="Please .." styleClass="w3-input"
+								value="#{categoryController.category.name}" placeholder="Name"
+								id="catc" />
+							<h:message for="catc"></h:message>
+						</div>
+						<div class="6u 12u$(xsmall)">
+							<p:commandButton 
+								value="#{categoryController	.itemIsSelected ? comp['btn.update'] : comp['btn.save']}"
+								actionListener="#{categoryController.save}"
+								update=":form:panelGrid,:form:basicDT"
+								styleClass="w3-btn w3-blue-grey"></p:commandButton>
+							<p:commandButton value="Clean"
+								actionListener="#{categoryController.clean}"
+								update=":form:panelGrid" styleClass="w3-btn w3-blue-grey"></p:commandButton>
+						</div>
+					</div>
+				</h:panelGroup>
+				<br></br>
+
+				<br></br>
+				<p class="logo">
+					<STRONG>Kategori Listesi</STRONG>
+				</p>
+
+				<p:dataTable tableStyle="table-wrapper" scrollable="false"
+					tableStyleClass="myTableClass"
+					style="border-left:none; border: hidden; border-style: none;"
+					id="basicDT" var="car" value="#{categoryController.listCategory}"
+					selectionMode="single"
+					selection="#{categoryController.selectedCategory}"
+					rowKey="#{car.id}">
+
+					<p:ajax event="rowSelect"
+						listener="#{categoryController.onRowSelect}"
+						update=":form:panelGrid" />
+
+					<p:column headerText="Name" style="text-align: left; width:5%">
+						<h:outputText value="#{car.name}" />
+					</p:column>
+					<p:column style="text-align: right;  width: 20px;"
+						headerText="Remove">
+						<p:commandButton value="remove" styleClass="w3-btn w3-blue-grey"
+							title="delete" actionListener="#{categoryController.delete(car)}"
+							update="form" style="hover:blue;">
+						</p:commandButton>
+					</p:column>
+
+				</p:dataTable>
+
+
+			</h:form>
+
+
+		</div>
+	</ui:define>
+
+	<ui:define name="footer">
+		<ui:include src="/masterpage/footer.xhtml"></ui:include>
+	</ui:define>
+
+</ui:composition>

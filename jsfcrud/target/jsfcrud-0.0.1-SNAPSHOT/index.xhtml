@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/masterpage/template.xhtml">
+
+
+
+
+
+	<ui:define name="header">
+		<ui:include src="/masterpage/header.xhtml"></ui:include>
+	</ui:define>
+
+
+
+	<ui:define name="content">
+		<div class="content">
+			<H1>Prerequisites</H1>
+			<p>JDK 1.7 or later</p>
+			 <p>Maven 3 or later</p>
+
+
+			<H1>Stack</H1>
+
+			<p>SPRING FRAMEWORK,SPRING DATA</p>
+			<p>HIBERNATE,JPA</p>
+			<p>JSF</p>
+			<p>PRIMEFACES</p>
+			<p>POSTGRESQL</p>
+
+			
+
+
+
+		</div>
+	</ui:define>
+
+	<ui:define name="footer">
+		<ui:include src="/masterpage/footer.xhtml"></ui:include>
+	</ui:define>
+
+</ui:composition>
