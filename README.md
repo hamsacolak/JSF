@@ -1,14 +1,13 @@
 # JSF
-Basic Crud Example with JSF,Spring Data JPA,HIBERNATE,PRIMEFACES
-<H1>Prerequisites</H1>
-			<p>JDK 1.7 or later</p>
-			 <p>Maven 3 or later</p>
+Basic Crud Example with JSF,Spring Framework,Spring Data JPA,HIBERNATE,PRIMEFACES
 
 
-			<H1>Stack</H1>
+#Prerequisites
+*Maven 3 or later
+*JDK 1.8 or later
 
-			<p>SPRING FRAMEWORK,SPRING DATA</p>
-			<p>HIBERNATE,JPA</p>
-			<p>JSF</p>
-			<p>PRIMEFACES</p>
-			<p>POSTGRESQL</p>
+#Stack
+*SPRING FRAMEWORK,SPRING DATA
+*HIBERNATE,JPA
+*PRIMEFACES
+*POSTGRESQL
